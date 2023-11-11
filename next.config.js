@@ -20,6 +20,15 @@ const nextConfig = {
       },
     ];
   },
+  experimental: {
+    serverActions: {
+      allowedForwardedHosts: ["localhost", "mern-nextjs.onrender.com"],
+      allowedOrigins: [
+        "mern-nextjs.onrender.com",
+        "localhost:3000",
+      ],
+    },
+  },
 
   // async rewrites() {
   //   console.log("Rewrites called");
