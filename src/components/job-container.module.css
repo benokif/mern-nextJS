@@ -1,0 +1,101 @@
+.section{
+  padding-top: 4rem;
+} 
+  .jobsTitle {
+    margin-bottom: 1.5rem;
+  }
+  .jobsErrorTitle {
+    text-transform: none;
+  }
+  .jobs h5 {
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
+  .jobs {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 2rem;
+  }
+  @media (min-width: 1120px) {
+    .jobs {
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+  }
+
+.article {
+  background: var(--background-secondary-color);
+  border-radius: var(--border-radius);
+  display: grid;
+  grid-template-rows: 1fr auto;
+  box-shadow: var(--shadow-2);
+}
+.header {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--grey-100);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+}
+.mainIcon {
+  width: 60px;
+  height: 60px;
+  display: grid;
+  place-items: center;
+  background: var(--primary-500);
+  border-radius: var(--border-radius);
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-right: 2rem;
+}
+.info h5 {
+  margin-bottom: 0.5rem;
+}
+.info p {
+  margin: 0px;
+    text-transform: capitalize;
+    letter-spacing: var(--letter-spacing);
+    color: var(--text-secondary-color);
+}
+
+.content {
+  padding: 1rem 1.5rem;
+}
+.contentCenter {
+  display: grid;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  grid-template-columns: 1fr;
+  row-gap: 1.5rem;
+  align-items: center;
+  @media (min-width: 576px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.status {
+  border-radius: var(--border-radius);
+  text-transform: capitalize;
+  letter-spacing: var(--letter-spacing);
+  text-align: center;
+  width: 100px;
+  height: 30px;
+  display: grid;
+  align-items: center;
+}
+.actions {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+}
+.editBtn,
+.deleteBtn {
+  height: 30px;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+}
+.editBtn {
+  margin-right: 0.5rem;
+}

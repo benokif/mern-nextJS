@@ -1,0 +1,35 @@
+.container {
+  position: relative;
+  width: 100%; /* Set the container's width to 100% of its parent */
+  height: 100vh; /* Set the container's height to 100% of the viewport height (full height) */
+  overflow: hidden; /* Hide any overflow if the image is larger than the container */
+  display: flex;
+  flex-direction: column;
+}
+
+.container h2 {
+  padding: 4rem;
+  line-height: 3rem;
+  text-transform: lowercase;
+}
+
+.container img {
+  width: 100%; /* Make the image take full width of the container */
+  height: auto; /* Make the image take full height of the container */
+  object-fit: cover; /* Cover the space while maintaining aspect ratio */
+  opacity: 0.2; /* Set the opacity to 0.5 for the image */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1; /* Place the image behind the content */
+}
+
+.buttonContainer {
+  align-self: center;
+  display: grid;
+
+}
+
+.container button {
+  margin-bottom: 1rem;
+}

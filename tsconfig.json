@@ -1,0 +1,53 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "allowJs": true,
+    "outDir": "./dist",
+    "rootDir": "./",
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    },
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ]
+  },
+  "typeRoots": [
+    "./types",
+    "node_modules/@@types"
+  ],
+  "ts-node": {
+    "esm": true
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "prisma.ts",
+    "../next-env.d.ts",
+    ".next/types/**/*.ts",
+    "server.js"
+  ],
+  "exclude": [
+    "node_modules",
+    "types"
+  ]
+}

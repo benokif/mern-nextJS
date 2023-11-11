@@ -1,0 +1,54 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+enum JobStatus {
+  INTERVIEW
+  DECLINED
+  PENDING
+}
+
+enum JobType {
+  FULL_TIME
+  PART_TIME
+  INTERNSHIP
+}
+
+model Job {
+  id       String    @id @default(auto()) @map("_id") @db.ObjectId
+  company     String 
+  position    String
+  jobStatus   JobStatus @default(PENDING)
+  jobType     JobType @default(FULL_TIME)
+  jobLocation String @default("remote")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  author   User   @relation(fields: [authorId], references: [id])
+  authorId String @db.ObjectId
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+model User {
+  id       String    @id @default(auto()) @map("_id") @db.ObjectId
+  name String
+  email String @unique
+  password String
+  lastName String @default("lastName")
+  location String @default("earth")
+  avatar String
+  avatarHash String
+  role UserRole @default(USER)
+  jobs Job[]
+}
