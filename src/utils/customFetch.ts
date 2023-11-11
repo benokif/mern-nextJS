@@ -1,7 +1,7 @@
 // 🔵 customize based on API url
 const port = process.env.port || 3000
 
-const url = "https://mern-nextjs.onrender.com"
+const url = process.env.NODE_ENV === 'production' ? "https://mern-nextjs.onrender.com" : `http://localhost:${port}`
 const baseUrl = `${url}/api/v1`;
 
 export type Headers = { [key: string]: string };

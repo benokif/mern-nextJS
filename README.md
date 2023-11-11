@@ -14,14 +14,6 @@ Schema Validation - runtime: [zod](https://github.com/colinhacks/zod)
 
 ## Fork instructions
 
-- Make the following change
-
-📁client/utils/customFetch.ts
-```diff
-+const url = `http://localhost:${port}`
--const url = "https://mern-nextjs.onrender.com"
-```
-
 - run the development server:
 
 ```bash

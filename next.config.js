@@ -20,6 +20,7 @@ const nextConfig = {
       },
     ];
   },
+
   // async rewrites() {
   //   console.log("Rewrites called");
   //   return {

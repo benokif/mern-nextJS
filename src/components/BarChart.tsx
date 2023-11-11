@@ -1,5 +1,7 @@
 import * as Plot from "@observablehq/plot";
+import { useEffect, useRef } from "react";
 import styles from "./chart.module.css";
+
 interface GroupedObject {
   createdAt: string;
   count: number;
@@ -12,28 +14,37 @@ const BarChart = ({
   data: GroupedObject[];
   count: number;
 }) => {
-  const chart: unknown = Plot.plot({
-    x: { padding: 0.4, type: "band" },
-    y: {
-      ticks: [0, ...Array.from({ length: count }, (_, index) => index + 1)],
-    },
-    marginTop: 50,
-    grid: true,
-    marginBottom: 50,
+  const divRef = useRef();
+  useEffect(() => {
+    const chart = Plot.plot({
+      x: { padding: 0.4, type: "band" },
+      y: {
+        ticks: [0, ...Array.from({ length: count }, (_, index) => index + 1)],
+      },
+      marginTop: 50,
+      grid: true,
+      marginBottom: 50,
 
-    style: "background: transparent; font-size: 1rem",
-    marks: [
-      Plot.barY(data, {
-        x: "createdAt",
-        y: "count",
-        fill: "#10b981",
-      }),
-    ],
-  });
+      style: "background: transparent; font-size: 1rem",
+      marks: [
+        Plot.barY(data, {
+          x: "createdAt",
+          y: "count",
+          fill: "#10b981",
+        }),
+      ],
+    });
+    //@ts-ignore
+    divRef?.current.append(chart);
+    return () => chart.remove();
+  }, [data]);
 
   return (
     <>
-      <div className={styles.container}>{chart as React.ReactNode}</div>
+      <div
+        className={styles.container} //@ts-ignore
+        ref={divRef}
+      ></div>
     </>
   );
 };
