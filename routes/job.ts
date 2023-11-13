@@ -1,24 +1,24 @@
-import express from 'express'
+import express from "express";
 import {
-  getJobs, createJob, updateJob, deleteJob, getSingleJob, getStats
-} from '../controllers/job.js'
-import { checkTestUser } from '../middleware/authMiddleware.js';
-import rateLimiter from "express-rate-limit";
+  getJobs,
+  createJob,
+  updateJob,
+  deleteJob,
+  getSingleJob,
+  getStats,
+} from "../controllers/job.js";
+import { checkTestUser } from "../middleware/authMiddleware.js";
+import { rateLimiter } from "../middleware/rateLimiter.js";
+
 const router = express.Router();
 
-const apiLimiter = rateLimiter({
-  windowMs: 15 * 60 * 1000,
-  max: 10,
-  message: { msg: "IP rate limit exceeded, try in 15 minutes" },
-});
+router.route("/").get(getJobs).post(rateLimiter, checkTestUser, createJob);
 
-router.route("/").get(getJobs).post(apiLimiter,checkTestUser,createJob);
-
-router.route("/stats").get(getStats)
+router.route("/stats").get(getStats);
 router
   .route("/:id")
   .get(getSingleJob)
-  .patch(checkTestUser, updateJob)
-  .delete(checkTestUser, deleteJob);
+  .patch(rateLimiter, checkTestUser, updateJob)
+  .delete(rateLimiter, checkTestUser, deleteJob);
 
-export default router
+export default router;
