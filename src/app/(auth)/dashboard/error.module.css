@@ -1,7 +1,7 @@
 .container {
   position: relative;
   width: 100%; /* Set the container's width to 100% of its parent */
-  height: 100vh; /* Set the container's height to 100% of the viewport height (full height) */
+  height: 100vh - 2rem - var(--nav-height); /* Set the container's height to 100% of the viewport height : 100 vh - layout padding (2rem) and navbar height ( */
   overflow: hidden; /* Hide any overflow if the image is larger than the container */
   display: flex;
   flex-direction: column;
@@ -11,6 +11,7 @@
   padding: 4rem;
   line-height: 3rem;
   text-transform: lowercase;
+  z-index: -1;
 }
 
 .container img {
