@@ -43,23 +43,24 @@ export function createApiInstance(options: ApiInstanceOptions) {
         response.status === 404 ||
         response.status === 500 ||
         response.status === 503
-        ) {
-          const errorData = await response.json();
-          // 🔵 customize based on API error response
-          if (response.status === 400) {
-            throw new Error(`Bad Request: ${errorData.msg}`);
-          } else if (response.status === 401) {
-            throw new Error(`Unauthorized: ${errorData.msg}`);
-          } else if (response.status === 404) {
-            throw new Error(`Not Found: ${errorData.msg}`);
-          } else if (response.status === 500) {
-            throw new Error(`Internal Server Error: ${errorData.msg}`);
-          } else if (response.status === 503) {
-            throw new Error(`Service Unavailable: ${errorData.msg}`);
-          } else {
-            throw new Error(`HTTP Status ${response.status}: ${errorData.msg}`);
-          }
+      ) {
+        const errorData = await response.json();
+        // 🔵 customize based on API error response
+        if (response.status === 400) {
+          throw new Error(`Bad Request: ${errorData.msg}`);
+        } else if (response.status === 401) {
+          throw new Error(`Unauthorized: ${errorData.msg}`);
+        } else if (response.status === 404) {
+          throw new Error(`Not Found: ${errorData.msg}`);
+        } else if (response.status === 500) {
+          throw new Error(`Internal Server Error: ${errorData.msg}`);
+        } else if (response.status === 503) {
+          throw new Error(`Service Unavailable: ${errorData.msg}`);
         }
+      } else {
+        const errorData = await response.json();
+        throw new Error(`HTTP Status ${response.status}: ${errorData.msg}`);
+      }
       }
       
       const responseData = await response.json();
